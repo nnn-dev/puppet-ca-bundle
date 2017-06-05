@@ -45,7 +45,7 @@ uninstall:
 keystore: pemify
 ifdef KEYTOOL
 	for pem_file in ./pl_*.pem; do \
-		/bin/echo yes | $(KEYTOOL) -import \
+		/bin/echo yes | LANG=C $(KEYTOOL) -import \
 			-alias $$(basename "$${pem_file}" .pem | sed -e 's/^pl_//') \
 			-keystore $(KEYSTORE) \
 			-storepass 'changeit' \
